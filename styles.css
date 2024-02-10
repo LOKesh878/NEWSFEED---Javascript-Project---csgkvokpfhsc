@@ -79,3 +79,12 @@ body{
   text-decoration: none;
   color:black;
 }
+.newNews{
+  width:100%;
+  background-color: black;
+  color:white;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
