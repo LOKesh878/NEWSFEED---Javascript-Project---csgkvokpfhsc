@@ -15,7 +15,7 @@ async function renderUsers() {
     let btn = document.querySelector('#btn');
     function display() {
       showNewsArticles(news);
-      alert('It was clicked!');
+      
     }
 
     btn.addEventListener('click', display);
@@ -23,7 +23,7 @@ async function renderUsers() {
     let bus=document.querySelector("#bus");
     function busData(){
       showNewsArticles(news.filter((user) => user.category == 'Business'));
-        alert("Display Bussinnes Related News");
+        
     }
     bus.addEventListener('click',busData);
     
@@ -33,13 +33,13 @@ async function renderUsers() {
     let poli=document.querySelector("#poli");
     function poliData(){
       showNewsArticles(news.filter((user) => user.category == 'Politics'));
-      alert(" Politics  Related News");
+      
     }
     poli.addEventListener('click',poliData);
     let sport=document.querySelector("#sport");
     function sportData(){
       showNewsArticles(news.filter((user) => user.category == 'Sports'));
-      alert(" Sports  Related News");
+      
     }
     sport.addEventListener('click',sportData);
     let hatke=document.querySelector("#hatke");
@@ -48,16 +48,55 @@ async function renderUsers() {
         showNewsArticles(news.filter((user) => user.category == 'Hatke'));
       },5000);
      
-      alert(" Hatke  Related News");
+     
     }
     hatke.addEventListener('click',hatkeNews);
     let auto=document.querySelector("#auto");
     function autoData(){
       showNewsArticles(news.filter((user) => user.category == 'Automobile'));
-      alert(" Automobile  Related News");
+      
     }
     auto.addEventListener('click',autoData);
-    
+
+    let science=document.querySelector("#science");
+    function scienceData(event){
+      showNewsArticles(news.filter((user) => user.category == 'Science'));
+      
+      event.preventDefault() ;
+      const b=document.createElement("p");
+       const newContent=document.createTextNode("No data found");
+       b.appendChild(newContent);
+       const currentDiv=document.querySelector(".newsdisplay1");
+       document.body.insertBefore(b,currentDiv);
+    }
+    science.addEventListener('click',scienceData);
+
+    let tech=document.querySelector("#tech");
+    let star=document.querySelector("#star");
+    let enter=document.querySelector("#enter");
+    let world=document.querySelector("#world");
+    function techData(){
+      showNewsArticles(news.filter((user) => user.category == 'Technology'));
+      
+    }
+    tech.addEventListener('click',techData);
+    function starData(){
+      showNewsArticles(news.filter((user) => user.category == 'Startups'));
+     
+    }
+    star.addEventListener('click',starData);
+    function enterData(){
+      showNewsArticles(news.filter((user) => user.category == 'Entertainment'));
+      
+    }
+    enter.addEventListener('click',enterData);
+    function worldData(){
+      showNewsArticles(news.filter((user) => user.category == 'International'));
+      
+    }
+    world.addEventListener('click',worldData);
+
+
   } catch (error) {
     console.log(error);
   }
@@ -77,7 +116,14 @@ function showNewsArticles(newsList) {
                             <p>CATEGORY <b>${user.category}</b></p>
                           </div>
                         </div>
+                        <div class="content">
+                        <div>
                         <p>${user.content} <a href='${user.url}'>READ MORE</a></p>
+                        </div>
+                        <div>
+                        <span id="icon">♡</span>
+                        </div>
+                       </div>
                       </div>`;
     html += htmlSegment;
   });
